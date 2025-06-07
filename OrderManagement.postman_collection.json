@@ -1,0 +1,265 @@
+{
+	"info": {
+		"_postman_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+		"name": "Order Management System",
+		"description": "A collection of APIs for the Order Management System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Inventory",
+			"item": [
+				{
+					"name": "Create Inventory Item",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"itemName\": \"Pizza Margherita\",\n    \"quantity\": 100,\n    \"threshold\": 10,\n    \"unit\": \"pieces\",\n    \"price\": 12.99,\n    \"category\": \"Food\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/inventory",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "inventory"]
+						}
+					}
+				},
+				{
+					"name": "Get All Inventory Items",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:3000/api/inventory",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "inventory"]
+						}
+					}
+				},
+				{
+					"name": "Get Inventory Item by ID",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:3000/api/inventory/:itemId",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "inventory", ":itemId"],
+							"variable": [
+								{
+									"key": "itemId",
+									"value": "",
+									"description": "ID of the inventory item"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Update Inventory Item",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"quantity\": 150,\n    \"price\": 13.99\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/inventory/:itemId",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "inventory", ":itemId"],
+							"variable": [
+								{
+									"key": "itemId",
+									"value": "",
+									"description": "ID of the inventory item"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Delete Inventory Item",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "http://localhost:3000/api/inventory/:itemId",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "inventory", ":itemId"],
+							"variable": [
+								{
+									"key": "itemId",
+									"value": "",
+									"description": "ID of the inventory item"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Inventory Analytics Summary",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:3000/api/inventory/analytics/summary",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "inventory", "analytics", "summary"]
+						}
+					}
+				},
+				{
+					"name": "Get Low Stock Items",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:3000/api/inventory/analytics/low-stock",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "inventory", "analytics", "low-stock"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "Create Order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerId\": \"550e8400-e29b-41d4-a716-446655440000\",\n    \"items\": [\n        {\n            \"name\": \"Garlic Bread\",\n            \"quantity\": 2,\n            \"price\": 5.99\n        }\n    ],\n    \"totalAmount\": 11.98,\n    \"deliveryAddress\": {\n        \"street\": \"123 Main St\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"zipCode\": \"10001\",\n        \"country\": \"USA\"\n    },\n    \"status\": \"PENDING\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/orders",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "orders"]
+						}
+					}
+				},
+				{
+					"name": "Get All Orders",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:3000/api/orders",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "orders"]
+						}
+					}
+				},
+				{
+					"name": "Get Order by ID",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:3000/api/orders/:orderId",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "orders", ":orderId"],
+							"variable": [
+								{
+									"key": "orderId",
+									"value": "",
+									"description": "ID of the order"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Update Order Status",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"PREPARING\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/orders/:orderId",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "orders", ":orderId"],
+							"variable": [
+								{
+									"key": "orderId",
+									"value": "",
+									"description": "ID of the order"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Delete Order",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "http://localhost:3000/api/orders/:orderId",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "3000",
+							"path": ["api", "orders", ":orderId"],
+							"variable": [
+								{
+									"key": "orderId",
+									"value": "",
+									"description": "ID of the order"
+								}
+							]
+						}
+					}
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+} 
